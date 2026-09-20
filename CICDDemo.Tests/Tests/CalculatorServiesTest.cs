@@ -17,7 +17,7 @@ namespace CICDDemo.Tests.Tests
             // Arrange
             var calculatorService = new CalculatorService();
             int a = 5;
-            int b = 11;
+            int b = 13;
             // Act 
             int result = calculatorService.Add(a, b);
             // Assert
