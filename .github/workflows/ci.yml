@@ -35,3 +35,15 @@ jobs:
 
       - name: Run NUnit tests
         run: dotnet test CICDDemo.sln --configuration Release --no-build
+
+      - name: Publish application
+        run: |
+          dotnet publish src/CICDDemo.Api/CICDDemo.Api.csproj \
+            --configuration Release \
+            --no-build \
+            --output ./publish
+      - name: Upload application artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: CICDDemo-Api
+          path: ./publish
