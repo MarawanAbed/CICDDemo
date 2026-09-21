@@ -1,0 +1,36 @@
+name: .NET CD
+
+on:
+  workflow_run:
+    workflows: [".NET CI"]
+    types:
+      - completed
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download CI artifact
+        uses: actions/download-artifact@v5
+        with:
+          name: CICDDemo-MVC
+          path: ./publish
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ github.event.workflow_run.id }}
+
+      - name: Deploy to MonsterASP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: ${{ secrets.MONSTERASP_FTP_HOST }}
+          username: ${{ secrets.MONSTERASP_FTP_USERNAME }}
+          password: ${{ secrets.MONSTERASP_FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./publish/
+          server-dir: ./
