@@ -31,3 +31,4 @@ D:\CICDDemo\CICDDemo\obj\Debug\net8.0\refint\CICDDemo.dll
 D:\CICDDemo\CICDDemo\obj\Debug\net8.0\CICDDemo.pdb
 D:\CICDDemo\CICDDemo\obj\Debug\net8.0\CICDDemo.genruntimeconfig.cache
 D:\CICDDemo\CICDDemo\obj\Debug\net8.0\ref\CICDDemo.dll
+D:\CICDDemo\CICDDemo\obj\Debug\net8.0\CICDDemo.sourcelink.json
